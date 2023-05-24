@@ -8,7 +8,7 @@
  * Return: An array of pointers to the arguments
  */
 
-char **tokenize(char *command)
+char **tokenize(char *command, char **argv)
 {/* Declaration of Variables */
 	char **args = NULL;
 	char *token = NULL;
@@ -19,8 +19,8 @@ char **tokenize(char *command)
 	args = malloc(sizeof(char *) * MAX_ARGS);
 	if (!args)
 	{
-		perror("shell");
-	}
+		handle_errors(&argv[0]);
+		return (NULL); }
 	if (!command)
 	{
 		return (NULL); }

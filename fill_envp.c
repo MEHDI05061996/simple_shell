@@ -18,13 +18,14 @@ char **fill_envp(char **cargs)
 /* Code Statements */
 	/* Allocate memory for envp */
 	for (env_count = 0; environ[env_count] != NULL; env_count++)
+	;
 	set_env = malloc((env_count + 1) * sizeof(char *));
 	if (set_env == NULL)
 	{
 		handle_errors(&cargs[0]); }
 	for (i = 0; environ[i] != NULL; i++)
 	{
-		set_env[i] = strdup(environ[i]); }
+		set_env[i] = _strdup(environ[i]); }
 	set_env[i] = NULL; /* set last element to NULL for execve */
 	return (set_env);
 }

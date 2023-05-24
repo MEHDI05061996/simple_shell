@@ -30,13 +30,21 @@ char *handle_path(char **args, char **argv)
 			_strcat(full_path, args[0]);
 			if (access(full_path, X_OK) == -1)
 			{
+				free(full_path);
 				continue; }
 			else
 			{
+				for (i = 0; path[i] != NULL; i++)
+				{
+					free(path[i]); }
 				free(path);
 				return (full_path); }
 		}
+		for (i = 0; path[i] != NULL; i++)
+		{
+			free(path[i]); }
 		free(path);
+		free(full_path);
 	}
 	else
 	{

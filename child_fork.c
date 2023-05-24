@@ -9,7 +9,7 @@
  * @cmd: Character pointer to parsed command.
  */
 
-void child_fork(char **args, char *argv[], char **envp, char *cmd)
+void child_fork(char **args, char *argv[], char *cmd, char **envp)
 {/* Declaration of Variables */
 	pid_t pid;
 	int status = 0;
@@ -20,12 +20,10 @@ void child_fork(char **args, char *argv[], char **envp, char *cmd)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			free(args);
-			handle_errors(&argv[0]); }
-		else
-		{
-			free(args); }
+			handle_errors(&argv[0]);
 			return; }
+		return;
+	}
 	else if (pid == 0)
 	{/* Child process */
 		if (isatty(STDIN_FILENO))
@@ -34,11 +32,11 @@ void child_fork(char **args, char *argv[], char **envp, char *cmd)
 			handle_errors(&argv[0]); }
 		else
 		{
-			execve(cmd, args, envp); }}
+			execve(cmd, args, envp);}
+	}
 	else
 	{ /*Parent process - Wait for child process to complete */
 		do {
 			waitpid(pid, &status, WUNTRACED);
 		} while (!WIFEXITED(status) && !WIFSIGNALED(status)); }
-	free(args);
 }

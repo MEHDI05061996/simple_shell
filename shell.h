@@ -50,21 +50,22 @@ extern char **environ;
 
 /* Function prototypes */
 char **fill_envp(char **envp);
-char **tokenize(char *command);
-void execute_command(char **args, char **argv, char **envp);
-int *prompt(char *cmd_args[], char **envp);
+char **tokenize(char *command, char **argv);
+void execute_command(char **args, char **argv);
+int *prompt(char *cmd_args[]);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void handle_errors(char *cmd_args[]);
 char *_getenv(char *name);
 void sigint_handler(int sig);
-void non_int_mode(char **cmd_args, char **envp);
+void non_int_mode(char **cmd_args);
 int is_env_builtin(char *command);
 int check_path(const char *command, char **path, char *full_path);
 void exit_shell(void);
 int handle_built_ins(char **args, char **argv, char **envp);
 char **tokenize_path(char **argv);
 char *handle_path(char **args, char **argv);
-void child_fork(char **args, char *argv[], char **envp, char *cmd);
+void child_fork(char **args, char *argv[], char *cmd, char **envp);
+void free_envp(char **envp);
 
 /* String Handlers */
 char *_strcat(char *dest, char *src);

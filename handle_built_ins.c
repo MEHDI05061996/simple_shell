@@ -27,6 +27,11 @@ int handle_built_ins(char **args, char **argv, char **envp)
 		return (0); }
 	else if (_strcmp(args[0], "exit") == 0)
 	{/* check if command is "exit" built-in */
+		for (j = 0; args[j] != NULL; j++)
+		{
+			free(args[j]); }
+		free(args);
+		free_envp(envp);
 		exit(EXIT_SUCCESS); }
 	else if (_strcmp(args[0], "cd") == 0)
 	{/* check if command is "cd" built-in */

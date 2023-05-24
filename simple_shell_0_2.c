@@ -12,16 +12,13 @@
 
 int main(int __attribute__((unused))argc, char **argv)
 {/* Declaration of Variables */
-	char **env = NULL;
 
 /* Code Statements */
-	env = fill_envp(argv);
 	if (isatty(STDIN_FILENO))
 	{/* reprompt if in interactive shell */
-		prompt(argv, env); }
+		prompt(argv); }
 	else
 	{
-		non_int_mode(argv, env); }
-	free(env);
+		non_int_mode(argv); }
 	return (EXIT_SUCCESS);
 }
