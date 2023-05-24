@@ -32,7 +32,7 @@ void child_fork(char **args, char *argv[], char *cmd, char **envp)
 			handle_errors(&argv[0]); }
 		else
 		{
-			execve(cmd, args, envp);}
+			execve(cmd, args, envp); }
 	}
 	else
 	{ /*Parent process - Wait for child process to complete */

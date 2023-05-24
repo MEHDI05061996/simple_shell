@@ -3,7 +3,6 @@
 /**
  * non_int_mode - handles when user input in non interactive mode
  *
- * @envp: envrionmental variables
  * @cmd_args: program command string buffer.
  */
 
