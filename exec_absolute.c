@@ -5,7 +5,6 @@
  * executes them.
  *
  * @args: Charachter pointer to buffer containing tokenized arguments
- * @envp: Character pointer to buffer containing environmental variables.
  * @argv: Character pointer array to buffer holding program command string.
  */
 

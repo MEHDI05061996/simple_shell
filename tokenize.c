@@ -4,6 +4,7 @@
  * tokenize - Split a string into arguments
  *
  * @command: The string to tokenize
+ * @argv: Character pointer array to buffer holding program command string.
  *
  * Return: An array of pointers to the arguments
  */
